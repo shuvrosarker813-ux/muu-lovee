@@ -1,373 +1,81 @@
-html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>For My Special Person ❤️</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        .startBox {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .startBox h2 {
-            font-size: 30px;
-            margin-bottom: 30px;
-        }
-
-        button {
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .startButton {
-            padding: 16px 28px;
-            border-radius: 30px;
-            background: white;
-            color: #ff4f81;
-            font-size: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .startButton:active {
-            transform: scale(0.95);
-        }
-
-        #lovePage {
-            display: none;
-            min-height: 100vh;
-            padding: 60px 20px;
-        }
-
-        h1 {
-            font-size: 42px;
-            margin-bottom: 30px;
-        }
-
-        #message {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 30px auto;
-            max-width: 600px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .yes,
-        .no {
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 18px;
-            color: white;
-        }
-
-        .yes {
-            background: #22c55e;
-        }
-
-        .no {
-            background: #ef4444;
-        }
-
-        .musicBox {
-            margin-top: 60px;
-        }
-
-        .musicBtn {
-            padding: 14px 25px;
-            border-radius: 30px;
-            background: white;
-            color: #ff4f81;
-            font-size: 17px;
-        }
-
-        .musicBars {
-            display: flex;
-            justify-content: center;
-            align-items: end;
-            gap: 5px;
-            height: 35px;
-            margin-top: 15px;
-        }
-
-        .bar {
-            width: 6px;
-            height: 10px;
-            background: white;
-            border-radius: 5px;
-        }
-
-        .playing .bar {
-            animation: music 0.6s infinite alternate;
-        }
-
-        .playing .bar:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .playing .bar:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .playing .bar:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .playing .bar:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes music {
-            from {
-                height: 8px;
-            }
-            to {
-                height: 32px;
-            }
-        }
-
-        .heart {
-            position: fixed;
-            bottom: -20px;
-            font-size: 25px;
-            animation: floatUp 4s linear forwards;
-            pointer-events: none;
-        }
-
-        @keyframes floatUp {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 32px;
-            }
-
-            #message {
-                font-size: 23px;
-            }
-
-            .startBox h2 {
-                font-size: 25px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- FIRST SCREEN -->
-
-    <div class="startBox" id="startBox">
-
-        <h2>For My Special Person ❤️</h2>
-
-        <button class="startButton" id="openButton">
-            Open My Heart 💖
-        </button>
-
-    </div>
-
-
-    <!-- LOVE PAGE -->
-
-    <div id="lovePage">
-
-        <h1>💖 My Love 💖</h1>
-
-        <div id="message">
-            Will You marry me? 💍❤️
-        </div>
-
-        <div class="buttons" id="buttons">
-
-            <button class="yes" id="yesButton">
-                YES ❤️
-            </button>
-
-            <button class="no" id="noButton">
-                NO 😢
-            </button>
-
-        </div>
-
-
-        <!-- MUSIC -->
-
-        <div class="musicBox">
-
-            <button class="musicBtn" id="musicButton">
-                ▶️ Play Music
-            </button>
-
-            <div class="musicBars" id="musicBars">
-
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- YOUR SONG -->
-
-    <audio id="loveSong" src="love-song.mp3"></audio>
-
-
-    <script>
-
-        const openButton = document.getElementById("openButton");
-        const startBox = document.getElementById("startBox");
-        const lovePage = document.getElementById("lovePage");
-
-        const yesButton = document.getElementById("yesButton");
-        const noButton = document.getElementById("noButton");
-
-        const musicButton = document.getElementById("musicButton");
-        const loveSong = document.getElementById("loveSong");
-        const musicBars = document.getElementById("musicBars");
-
-
-        // OPEN HEART
-
-        openButton.addEventListener("click", function () {
-
-            startBox.style.display = "none";
-            lovePage.style.display = "block";
-
-            createHearts();
-
-        });
-
-
-        // YES BUTTON
-
-        yesButton.addEventListener("click", function () {
-
-            document.getElementById("message").innerHTML =
-                "I Love You So Much! ❤️💍🥰<br><br>Forever Yours ❤️";
-
-            document.getElementById("buttons").style.display = "none";
-
-            createHearts();
-
-        });
-
-
-        // NO BUTTON
-
-        noButton.addEventListener("click", function () {
-
-            document.getElementById("message").innerHTML =
-                "Are you sure? 🥺❤️<br><br>Please say YES! 💍";
-
-            noButton.style.position = "relative";
-
-            noButton.style.left =
-                (Math.random() * 150 - 75) + "px";
-
-        });
-
-
-        // MUSIC BUTTON
-
-        musicButton.addEventListener("click", function () {
-
-            if (loveSong.paused) {
-
-                loveSong.play();
-
-                musicButton.innerHTML = "⏸️ Pause Music";
-
-                musicBars.classList.add("playing");
-
-            } else {
-
-                loveSong.pause();
-
-                musicButton.innerHTML = "▶️ Play Music";
-
-                musicBars.classList.remove("playing");
-
-            }
-
-        });
-
-
-        // HEART ANIMATION
-
-        function createHearts() {
-
-            for (let i = 0; i < 15; i++) {
-
-                setTimeout(function () {
-
-                    const heart = document.createElement("div");
-
-                    heart.className = "heart";
-
-                    heart.innerHTML = "❤️";
-
-                    heart.style.left =
-                        Math.random() * 100 + "vw";
-
-                    heart.style.animationDuration =
-                        (3 + Math.random() * 3) + "s";
-
-                    document.body.appendChild(heart);
-
-                    setTimeout(function () {
-                        heart.remove();
-                    }, 6000);
-
-                }, i * 150);
-
-            }
-
-        }
-
-    </script>
-
-</body>
-</html>
+```html
+<div class="startBox"> 
+ 
+    <h2>For My Special Person ❤️</h2> 
+ 
+    <button class="startButton" id="openButton"> 
+        Open My Heart 💖 
+    </button> 
+ 
+</div> 
+ 
+ 
+<h1>💖 My Love 💖</h1> 
+ 
+<div id="message"> 
+    Will You marry me? 💍❤️ 
+</div> 
+ 
+<div class="buttons" id="buttons"> 
+ 
+    <button class="yes" id="yesButton"> 
+        YES ❤️ 
+    </button> 
+ 
+    <button class="no" id="noButton"> 
+        NO 😢 
+    </button> 
+ 
+</div> 
+ 
+ 
+<!-- MUSIC --> 
+ 
+<div class="musicBox"> 
+ 
+    <button class="musicBtn" id="musicButton"> 
+        ▶️ Play Music 
+    </button> 
+ 
+    <div class="musicBars"> 
+ 
+        <div class="bar"></div> 
+        <div class="bar"></div> 
+        <div class="bar"></div> 
+        <div class="bar"></div> 
+        <div class="bar"></div> 
+ 
+    </div> 
+ 
+</div>
+
+
+<!-- SONG -->
+
+<audio id="loveSong" src="love-song.mp3"></audio>
+
+<script>
+
+const musicButton = document.getElementById("musicButton");
+const loveSong = document.getElementById("loveSong");
+
+musicButton.addEventListener("click", function() {
+
+    if (loveSong.paused) {
+
+        loveSong.play();
+
+        musicButton.innerHTML = "⏸️ Pause Music";
+
+    } else {
+
+        loveSong.pause();
+
+        musicButton.innerHTML = "▶️ Play Music";
+
+    }
+
+});
+
+</script>
+```
