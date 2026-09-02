@@ -1,701 +1,373 @@
+html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Love ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    box-sizing:border-box;
-}
+    <title>For My Special Person ❤️</title>
 
-body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#ff416c,#ff4b2b,#c471ed);
-    color:white;
-    overflow:hidden;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.container{
-    width:90%;
-    max-width:650px;
-    padding:35px 20px;
-    text-align:center;
-    background:rgba(255,255,255,0.16);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.35);
-    border-radius:30px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.25);
-    z-index:5;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            overflow-x: hidden;
+        }
 
-h1{
-    font-size:40px;
-    margin:0 0 25px;
-    text-shadow:0 0 15px white;
-}
+        .startBox {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-.message{
-    min-height:130px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:24px;
-    line-height:1.6;
-}
+        .startBox h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
 
-.buttons{
-    min-height:60px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    margin-top:15px;
-}
+        button {
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-button{
-    border:0;
-    padding:14px 30px;
-    border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:transform 0.2s;
-}
+        .startButton {
+            padding: 16px 28px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
 
-button:hover{
-    transform:scale(1.08);
-}
+        .startButton:active {
+            transform: scale(0.95);
+        }
 
-.yes{
-    background:#ff1744;
-    color:white;
-    box-shadow:0 0 20px rgba(255,23,68,0.7);
-}
+        #lovePage {
+            display: none;
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
 
-.no{
-    background:white;
-    color:#ff1744;
-}
+        h1 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
 
-.musicBox{
-    margin-top:22px;
-}
+        #message {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 30px auto;
+            max-width: 600px;
+        }
 
-.musicBtn{
-    background:rgba(255,255,255,0.18);
-    color:white;
-    border:1px solid rgba(255,255,255,0.6);
-}
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
 
-.musicBars{
-    height:40px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:5px;
-    margin-top:10px;
-}
+        .yes,
+        .no {
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            color: white;
+        }
 
-.bar{
-    width:6px;
-    height:15px;
-    background:white;
-    border-radius:10px;
-    animation:music 0.8s infinite ease-in-out;
-}
+        .yes {
+            background: #22c55e;
+        }
 
-.bar:nth-child(2){
-    animation-delay:0.1s;
-}
+        .no {
+            background: #ef4444;
+        }
 
-.bar:nth-child(3){
-    animation-delay:0.2s;
-}
+        .musicBox {
+            margin-top: 60px;
+        }
 
-.bar:nth-child(4){
-    animation-delay:0.3s;
-}
+        .musicBtn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 17px;
+        }
 
-.bar:nth-child(5){
-    animation-delay:0.4s;
-}
+        .musicBars {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 5px;
+            height: 35px;
+            margin-top: 15px;
+        }
 
-@keyframes music{
-    50%{
-        height:38px;
-    }
-}
+        .bar {
+            width: 6px;
+            height: 10px;
+            background: white;
+            border-radius: 5px;
+        }
 
-/* Start Screen */
+        .playing .bar {
+            animation: music 0.6s infinite alternate;
+        }
 
-#startScreen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
-    z-index:100;
-}
+        .playing .bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
 
-.startBox{
-    text-align:center;
-    padding:30px;
-}
+        .playing .bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
 
-.startBox h2{
-    font-size:34px;
-    margin-bottom:30px;
-}
+        .playing .bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
 
-.startButton{
-    background:white;
-    color:#ff416c;
-    font-size:20px;
-}
+        .playing .bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
 
-/* Floating Hearts */
+        @keyframes music {
+            from {
+                height: 8px;
+            }
+            to {
+                height: 32px;
+            }
+        }
 
-.heart{
-    position:fixed;
-    bottom:-40px;
-    font-size:25px;
-    pointer-events:none;
-    z-index:1;
-    animation:floatHeart 7s linear forwards;
-}
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 25px;
+            animation: floatUp 4s linear forwards;
+            pointer-events: none;
+        }
 
-@keyframes floatHeart{
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
 
-    0%{
-        transform:translateY(0) rotate(0);
-        opacity:0;
-    }
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
 
-    20%{
-        opacity:1;
-    }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
 
-    100%{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
-}
+            #message {
+                font-size: 23px;
+            }
 
-/* Music Notes */
-
-.note{
-    position:fixed;
-    bottom:-40px;
-    font-size:25px;
-    pointer-events:none;
-    z-index:1;
-    animation:floatNote 6s linear forwards;
-}
-
-@keyframes floatNote{
-
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-/* Runaway NO */
-
-.runaway{
-    position:fixed !important;
-    z-index:50;
-}
-
-/* Mobile */
-
-@media(max-width:500px){
-
-    h1{
-        font-size:30px;
-    }
-
-    .message{
-        font-size:20px;
-    }
-
-    button{
-        font-size:16px;
-        padding:12px 22px;
-    }
-
-    .startBox h2{
-        font-size:28px;
-    }
-}
-</style>
-
+            .startBox h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- START SCREEN -->
+    <!-- FIRST SCREEN -->
 
-<div id="startScreen">
+    <div class="startBox" id="startBox">
 
-```
-<div class="startBox">
+        <h2>For My Special Person ❤️</h2>
 
-    <h2>For My Special Person ❤️</h2>
-
-    <button class="startButton" id="openButton">
-        Open My Heart 💖
-    </button>
-
-</div>
-```
-
-</div>
-
-<!-- MAIN PAGE -->
-
-<div class="container">
-
-```
-<h1>💖 My Love 💖</h1>
-
-<div id="message">
-    Will You marry me? 💍❤️
-</div>
-
-<div class="buttons" id="buttons">
-
-    <button class="yes" id="yesButton">
-        YES ❤️
-    </button>
-
-    <button class="no" id="noButton">
-        NO 😢
-    </button>
-
-</div>
-
-
-<!-- MUSIC CONTROL -->
-
-<div class="musicBox">
-
-    <button class="musicBtn" id="musicButton">
-        ▶️ Play Music
-    </button>
-
-    <div class="musicBars">
-
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+        <button class="startButton" id="openButton">
+            Open My Heart 💖
+        </button>
 
     </div>
 
-</div>
-```
 
-</div>
+    <!-- LOVE PAGE -->
 
-<!--
-    IMPORTANT:
-    song.mp3 MUST BE IN THE SAME FOLDER
-    AS THIS index.html FILE.
--->
+    <div id="lovePage">
 
-<audio id="music" preload="auto">
-    <source src="./song.mp3" type="audio/mpeg">
-</audio>
+        <h1>💖 My Love 💖</h1>
 
-<script>
+        <div id="message">
+            Will You marry me? 💍❤️
+        </div>
 
-const music = document.getElementById("music");
-const musicButton = document.getElementById("musicButton");
-const message = document.getElementById("message");
-const buttons = document.getElementById("buttons");
+        <div class="buttons" id="buttons">
 
-let step = 1;
+            <button class="yes" id="yesButton">
+                YES ❤️
+            </button>
 
-const START_TIME = 35;
+            <button class="no" id="noButton">
+                NO 😢
+            </button>
+
+        </div>
 
 
-/* =========================
-   START BUTTON
-========================= */
+        <!-- MUSIC -->
 
-document.getElementById("openButton").addEventListener("click", function(){
+        <div class="musicBox">
 
-    document.getElementById("startScreen").style.display = "none";
+            <button class="musicBtn" id="musicButton">
+                ▶️ Play Music
+            </button>
 
-    playMusicFrom35();
+            <div class="musicBars" id="musicBars">
 
-});
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
 
+            </div>
 
-/* =========================
-   PLAY MUSIC FROM 35 SEC
-========================= */
+        </div>
 
-function playMusicFrom35(){
-
-    music.load();
-
-    music.addEventListener("loadedmetadata", function(){
-
-        if(music.duration >= START_TIME){
-
-            music.currentTime = START_TIME;
-
-        }else{
-
-            music.currentTime = 0;
-
-        }
-
-        music.play().then(function(){
-
-            musicButton.innerHTML = "⏸️ Pause Music";
-
-        }).catch(function(error){
-
-            console.log(error);
-
-            musicButton.innerHTML = "▶️ Play Music";
-
-        });
-
-    }, {once:true});
-
-}
+    </div>
 
 
-/* =========================
-   PLAY / PAUSE BUTTON
-========================= */
+    <!-- YOUR SONG -->
 
-musicButton.addEventListener("click", function(){
+    <audio id="loveSong" src="love-song.mp3"></audio>
 
-    if(music.paused){
 
-        if(music.currentTime < START_TIME && music.duration >= START_TIME){
+    <script>
 
-            music.currentTime = START_TIME;
+        const openButton = document.getElementById("openButton");
+        const startBox = document.getElementById("startBox");
+        const lovePage = document.getElementById("lovePage");
 
-        }
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
 
-        music.play().then(function(){
+        const musicButton = document.getElementById("musicButton");
+        const loveSong = document.getElementById("loveSong");
+        const musicBars = document.getElementById("musicBars");
 
-            musicButton.innerHTML = "⏸️ Pause Music";
 
-        }).catch(function(){
+        // OPEN HEART
 
-            playMusicFrom35();
+        openButton.addEventListener("click", function () {
+
+            startBox.style.display = "none";
+            lovePage.style.display = "block";
+
+            createHearts();
 
         });
 
-    }else{
 
-        music.pause();
+        // YES BUTTON
 
-        musicButton.innerHTML = "▶️ Play Music";
+        yesButton.addEventListener("click", function () {
 
-    }
+            document.getElementById("message").innerHTML =
+                "I Love You So Much! ❤️💍🥰<br><br>Forever Yours ❤️";
 
-});
+            document.getElementById("buttons").style.display = "none";
 
+            createHearts();
 
-/* =========================
-   YES BUTTON
-========================= */
+        });
 
-document.getElementById("yesButton").addEventListener("click", function(){
 
-    if(step === 1){
+        // NO BUTTON
 
-        showFinalMessage(
-            "You are my Bouuu ❤️🥺💍<br><br>" +
-            "Ami-o tumake bia korte chai ❤️😘<br>" +
-            "Tumi amar jiboner shobcheye special manush 💖"
-        );
+        noButton.addEventListener("click", function () {
 
-    }
+            document.getElementById("message").innerHTML =
+                "Are you sure? 🥺❤️<br><br>Please say YES! 💍";
 
-    else if(step === 2){
+            noButton.style.position = "relative";
 
-        showFinalMessage(
-            "Amar sathe sarajibon theke jao amar Bouuu ❤️🥺💍<br><br>" +
-            "Tomake chara amar jibon ami vabtei pari na ❤️"
-        );
+            noButton.style.left =
+                (Math.random() * 150 - 75) + "px";
 
-    }
+        });
 
-    else if(step === 3){
 
-        showFinalMessage(
-            "Tumi amar shopno, amar valobasha, amar shobkichu ❤️🥺<br><br>" +
-            "Sarajibon amar pashe theko amar Bouuu 💍❤️"
-        );
+        // MUSIC BUTTON
 
-    }
+        musicButton.addEventListener("click", function () {
 
-    else if(step === 4){
+            if (loveSong.paused) {
 
-        showFinalMessage(
-            "Amar Bouuuuu ❤️🥺💍<br><br>" +
-            "Sarajibon, morer age porjonto tomar sathe thakte chai ❤️<br><br>" +
-            "I Love You So Much My Love 😘❤️"
-        );
+                loveSong.play();
 
-    }
+                musicButton.innerHTML = "⏸️ Pause Music";
 
-});
+                musicBars.classList.add("playing");
 
+            } else {
 
-/* =========================
-   NO BUTTON
-========================= */
+                loveSong.pause();
 
-document.getElementById("noButton").addEventListener("click", function(){
+                musicButton.innerHTML = "▶️ Play Music";
 
-    const noButton = document.getElementById("noButton");
+                musicBars.classList.remove("playing");
 
-    if(step === 1){
+            }
 
-        message.innerHTML =
-            "Na bolleo ami tomake onek valobashi 🥺💔<br>" +
-            "Abar vabbe dekho na? ❤️";
+        });
 
-        step = 2;
 
-    }
+        // HEART ANIMATION
 
-    else if(step === 2){
+        function createHearts() {
 
-        message.innerHTML =
-            "Please amar mon ta venge dio na 🥺💔<br>" +
-            "Ekbar YES bolo na amar Bouuu ❤️";
+            for (let i = 0; i < 15; i++) {
 
-        step = 3;
+                setTimeout(function () {
 
-    }
+                    const heart = document.createElement("div");
 
-    else if(step === 3){
+                    heart.className = "heart";
 
-        message.innerHTML =
-            "Ami tomake harate chai na 🥺💔<br>" +
-            "Tumi amar onek aadorer Bou ❤️";
+                    heart.innerHTML = "❤️";
 
-        step = 4;
+                    heart.style.left =
+                        Math.random() * 100 + "vw";
 
-    }
+                    heart.style.animationDuration =
+                        (3 + Math.random() * 3) + "s";
 
-    else if(step === 4){
+                    document.body.appendChild(heart);
 
-        message.innerHTML =
-            "Tumi amar onek koste orjon kora adorer Bouuu 🥺❤️<br><br>" +
-            "NO bolleo tomake ami eto shohoje chere dibo na 😭❤️";
+                    setTimeout(function () {
+                        heart.remove();
+                    }, 6000);
 
-        noButton.innerHTML = "NO 😭";
+                }, i * 150);
 
-        noButton.classList.add("runaway");
+            }
 
-        noButton.onclick = runAway;
+        }
 
-        noButton.onmouseover = runAway;
-
-        noButton.ontouchstart = runAway;
-
-    }
-
-});
-
-
-/* =========================
-   FINAL MESSAGE
-========================= */
-
-function showFinalMessage(text){
-
-    message.innerHTML = text;
-
-    buttons.innerHTML = "";
-
-    createManyHearts(20);
-
-}
-
-
-/* =========================
-   RUN AWAY BUTTON
-========================= */
-
-function runAway(){
-
-    const button = document.getElementById("noButton");
-
-    if(!button){
-        return;
-    }
-
-    const maxX =
-        window.innerWidth - button.offsetWidth - 20;
-
-    const maxY =
-        window.innerHeight - button.offsetHeight - 20;
-
-    const x =
-        Math.max(10, Math.random() * maxX);
-
-    const y =
-        Math.max(10, Math.random() * maxY);
-
-    button.style.left = x + "px";
-
-    button.style.top = y + "px";
-
-}
-
-
-/* =========================
-   FLOATING HEART
-========================= */
-
-function createHeart(){
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    const heartList = [
-        "❤️",
-        "💖",
-        "💕",
-        "💗",
-        "💓",
-        "💘",
-        "🥰"
-    ];
-
-    heart.innerHTML =
-        heartList[
-            Math.floor(Math.random() * heartList.length)
-        ];
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.animationDuration =
-        (5 + Math.random() * 5) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(function(){
-
-        heart.remove();
-
-    },10000);
-
-}
-
-
-/* =========================
-   MANY HEARTS
-========================= */
-
-function createManyHearts(number){
-
-    for(let i = 0; i < number; i++){
-
-        setTimeout(function(){
-
-            createHeart();
-
-        }, i * 120);
-
-    }
-
-}
-
-
-/* =========================
-   FLOATING MUSIC NOTES
-========================= */
-
-function createNote(){
-
-    const note = document.createElement("div");
-
-    note.className = "note";
-
-    const noteList = [
-        "🎵",
-        "🎶",
-        "♪",
-        "♫"
-    ];
-
-    note.innerHTML =
-        noteList[
-            Math.floor(Math.random() * noteList.length)
-        ];
-
-    note.style.left =
-        Math.random() * 100 + "vw";
-
-    note.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
-
-    document.body.appendChild(note);
-
-    setTimeout(function(){
-
-        note.remove();
-
-    },8000);
-
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-setInterval(createHeart, 600);
-
-setInterval(createNote, 1000);
-
-
-/* =========================
-   SONG ENDED
-========================= */
-
-music.addEventListener("ended", function(){
-
-    musicButton.innerHTML = "▶️ Play Music";
-
-});
-
-</script>
+    </script>
 
 </body>
 </html>
